@@ -1,5 +1,9 @@
+<script setup>
+const route = useRoute()
+</script>
+
 <template>
-  <SiteNav />
+  <SiteNav v-if="!route.meta.hideNav" />
 
   <NuxtPage
     :transition="{

@@ -33,32 +33,105 @@
 
     <section class="home-learning">
       <div class="section-heading">
+        
         <h2>O que você vai aprender?</h2>
+        <p class="section-lead">
+          Cinco pilares que se conectam entre si e guiam sua jornada dentro do
+          Despertar da Consciência Financeira.
+        </p>
       </div>
 
       <ul class="learning-list">
-        <li><span>💰</span> Como organizar seu orçamento pessoal</li>
-        <li><span>📈</span> Estratégias para economizar e investir com inteligência</li>
-        <li><span>🏦</span> Como lidar com dívidas e evitar o endividamento</li>
-        <li><span>🎯</span> Planejamento financeiro para alcançar metas e sonhos</li>
-        <li><span>🧠</span> Mentalidade e hábitos financeiros mais conscientes</li>
+        <li>
+          <span class="learning-icon">
+            <RiWallet3Line />
+          </span>
+          <h3>Organização financeira</h3>
+          <p>
+            Aprenda a estruturar seu orçamento pessoal, entender para onde vai
+            o seu dinheiro e criar uma base sólida para as próximas etapas.
+          </p>
+        </li>
+
+        <li>
+          <span class="learning-icon">
+            <RiLineChartLine />
+          </span>
+          <h3>Economia e investimentos</h3>
+          <p>
+            Descubra estratégias práticas para economizar no dia a dia e dar
+            os primeiros passos rumo a investimentos mais conscientes.
+          </p>
+        </li>
+
+        <li>
+          <span class="learning-icon">
+            <RiScales3Line />
+          </span>
+          <h3>Dívidas e endividamento</h3>
+          <p>
+            Entenda como as dívidas se formam, como lidar com elas de forma
+            organizada e como evitar o endividamento no futuro.
+          </p>
+        </li>
+
+        <li>
+          <span class="learning-icon">
+            <RiFlagLine />
+          </span>
+          <h3>Planejamento e metas</h3>
+          <p>
+            Transforme sonhos e objetivos em planos financeiros concretos, com
+            etapas claras para acompanhar sua evolução.
+          </p>
+        </li>
+
+        <li>
+          <span class="learning-icon">
+            <RiRepeatLine />
+          </span>
+          <h3>Hábitos financeiros</h3>
+          <p>
+            Desenvolva uma mentalidade mais consciente sobre o dinheiro e
+            construa hábitos que sustentem sua saúde financeira a longo prazo.
+          </p>
+        </li>
       </ul>
     </section>
 
     <section class="home-start">
       <div>
-        <h2>🚀 Comece agora!</h2>
+        <p class="eyebrow">Continue avançando</p>
+        <h2>Continue sua jornada financeira</h2>
         <p>
-          Navegue pelos módulos no menu acima ou comece pelo orçamento pessoal.
-          A ideia é construir o projeto aos poucos, então algumas funcionalidades
-          ainda estão em desenvolvimento.
+          Explore os conteúdos de educação financeira, investimentos e
+          empreendedorismo e avance pelos temas de acordo com seus objetivos.
+          Quando quiser colocar seus conhecimentos à prova, você também pode
+          acessar o quiz.
         </p>
+      </div>
+
+      <div class="home-start-actions">
+        <NuxtLink class="primary-button" to="/educacao-financeira/orcamento">
+          Explorar conteúdos
+        </NuxtLink>
+        <NuxtLink class="text-button" to="/quiz">
+          Fazer o quiz
+        </NuxtLink>
       </div>
     </section>
   </main>
 </template>
 
 <script setup>
+import {
+  RiWallet3Line,
+  RiLineChartLine,
+  RiScales3Line,
+  RiFlagLine,
+  RiRepeatLine
+} from '@remixicon/vue'
+
 useHead({ title: 'Início — Despertar da Consciência Financeira' })
 </script>
 
@@ -308,11 +381,9 @@ useHead({ title: 'Início — Despertar da Consciência Financeira' })
 }
 
 .section-heading {
-  display: flex;
-  align-items: end;
-  justify-content: space-between;
-  gap: 30px;
-  margin-bottom: 28px;
+  max-width: 640px;
+  margin: 0 auto clamp(40px, 5vw, 56px);
+  text-align: center;
 }
 
 .section-heading h2,
@@ -323,49 +394,92 @@ useHead({ title: 'Início — Despertar da Consciência Financeira' })
   line-height: 1.05;
 }
 
+.section-lead {
+  margin-top: 14px;
+  color: var(--ink-soft);
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
 .learning-list {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
   list-style: none;
 }
 
 .learning-list li {
-  min-height: 178px;
-  padding: 21px;
+  min-height: 240px;
+  padding: 30px 26px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: flex-start;
   border: 1px solid var(--line);
-  border-radius: 18px;
+  border-radius: var(--radius-lg);
   background: rgba(255,253,248,.72);
-  color: var(--ink-soft);
-  font-size: .91rem;
-  font-weight: 600;
-  transition: transform .2s ease, background .2s ease, border-color .2s ease;
+  box-shadow: var(--shadow);
+  transition: transform .2s ease, background .2s ease, border-color .2s ease, box-shadow .2s ease;
+  animation: learning-card-in .5s ease both;
 }
 
-.learning-list li:nth-child(2) { transform: translateY(18px); }
-.learning-list li:nth-child(4) { transform: translateY(10px); }
+.learning-list li:nth-child(1) { animation-delay: .05s; }
+.learning-list li:nth-child(2) { animation-delay: .15s; }
+.learning-list li:nth-child(3) { animation-delay: .25s; }
+.learning-list li:nth-child(4) { animation-delay: .35s; }
+.learning-list li:nth-child(5) { animation-delay: .45s; }
 
 .learning-list li:hover {
   transform: translateY(-4px);
   background: #fff;
   border-color: #b9d3c5;
+  box-shadow: var(--shadow-hover);
 }
 
-.learning-list li:nth-child(2):hover { transform: translateY(14px); }
-.learning-list li:nth-child(4):hover { transform: translateY(6px); }
+.learning-list h3 {
+  margin: 0 0 10px;
+  color: var(--green-deep);
+  font-family: 'Fraunces', Georgia, serif;
+  font-size: 1.28rem;
+  line-height: 1.15;
+}
 
-.learning-list span {
+.learning-list p {
+  margin: 0;
+  color: var(--ink-soft);
+  font-size: .93rem;
+  line-height: 1.6;
+}
+
+.learning-icon {
   display: grid;
   place-items: center;
   width: 47px;
   height: 47px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
   border-radius: 14px;
   background: var(--green-soft);
-  font-size: 1.25rem;
+  color: var(--green-dark);
+  flex-shrink: 0;
+}
+
+.learning-icon svg {
+  width: 22px;
+  height: 22px;
+}
+
+.learning-list li:nth-child(3n+2) .learning-icon {
+  background: var(--gold-soft);
+  color: #8a6116;
+}
+
+.learning-list li:nth-child(3n+3) .learning-icon {
+  background: var(--green-soft2);
+  color: var(--green-deep);
+}
+
+@keyframes learning-card-in {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .home-start {
@@ -392,12 +506,17 @@ useHead({ title: 'Início — Despertar da Consciência Financeira' })
   top: -105px;
   border-radius: 50%;
   border: 42px solid rgba(168,207,84,.15);
+  animation: start-orbit-pulse 9s ease-in-out infinite;
 }
 
 .home-start > div,
 .home-start > a {
   position: relative;
   z-index: 1;
+}
+
+.home-start > div {
+  animation: start-fade-in .55s ease both;
 }
 
 .home-start h2 {
@@ -410,6 +529,17 @@ useHead({ title: 'Início — Despertar da Consciência Financeira' })
   color: rgba(255,255,255,.76);
 }
 
+.home-start-actions {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 14px;
+  flex-shrink: 0;
+  animation: start-fade-in .55s ease .12s both;
+}
+
 .text-button {
   flex: 0 0 auto;
   border: 1px solid rgba(255,255,255,.25);
@@ -417,9 +547,29 @@ useHead({ title: 'Início — Despertar da Consciência Financeira' })
   background: rgba(255,255,255,.08);
 }
 
+.text-button::after {
+  content: "→";
+  font-size: 1.02rem;
+  transition: transform .2s ease;
+}
+
 .text-button:hover {
   transform: translateY(-2px);
   background: rgba(255,255,255,.15);
+}
+
+.text-button:hover::after {
+  transform: translateX(3px);
+}
+
+@keyframes start-fade-in {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes start-orbit-pulse {
+  0%, 100% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.06); opacity: .85; }
 }
 
 @media (max-width: 1080px) {
@@ -430,21 +580,6 @@ useHead({ title: 'Início — Despertar da Consciência Financeira' })
   .home-hero-copy {
     padding-left: 52px;
     padding-right: 36px;
-  }
-
-  .learning-list {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-  }
-
-  .learning-list li:nth-child(2),
-  .learning-list li:nth-child(4) {
-    transform: none;
-  }
-
-  .learning-list li:hover,
-  .learning-list li:nth-child(2):hover,
-  .learning-list li:nth-child(4):hover {
-    transform: translateY(-4px);
   }
 }
 
@@ -461,9 +596,24 @@ useHead({ title: 'Início — Despertar da Consciência Financeira' })
     min-height: 390px;
   }
 
+  .learning-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .home-start {
     align-items: flex-start;
     flex-direction: column;
+  }
+
+  .home-start-actions {
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .home-start-actions .primary-button,
+  .home-start-actions .text-button {
+    flex: 1 1 200px;
   }
 }
 
@@ -528,14 +678,13 @@ useHead({ title: 'Início — Despertar da Consciência Financeira' })
   }
 
   .learning-list li {
-    min-height: 155px;
-    padding: 18px;
+    padding: 22px 20px;
   }
 
-  .learning-list span {
+  .learning-icon {
     width: 42px;
     height: 42px;
-    margin-bottom: 20px;
+    margin-bottom: 16px;
   }
 
   .home-start {
@@ -550,16 +699,21 @@ useHead({ title: 'Início — Despertar da Consciência Financeira' })
     grid-template-columns: 1fr;
   }
 
-  .learning-list li {
-    min-height: 130px;
-  }
-
   .home-hero-art {
     min-height: 290px;
   }
 
   .art-paper {
     transform: translate(-42%, -50%) rotate(4deg) scale(.88);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .learning-list li,
+  .home-start::after,
+  .home-start > div,
+  .home-start-actions {
+    animation: none;
   }
 }
 </style>

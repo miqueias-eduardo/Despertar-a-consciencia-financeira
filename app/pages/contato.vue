@@ -23,8 +23,18 @@
           required
         />
 
-        <button type="submit" class="submit-button">Enviar mensagem</button>
+        <button
+  type="submit"
+  class="submit-button"
+  :disabled="sending"
+>
+  {{ sending ? 'Enviando...' : 'Enviar mensagem' }}
+</button>
       </form>
+
+      <p v-if="errorMessage" class="form-error">
+  {{ errorMessage }}
+</p>
 
       <div class="contact-channels">
         <p class="contact-channels__label">Outros canais</p>
@@ -67,9 +77,37 @@ import { RiMailLine, RiGithubFill, RiCheckboxCircleFill } from '@remixicon/vue'
 
 const form = reactive({ nome: '', email: '', mensagem: '' })
 const submitted = ref(false)
+const sending = ref(false)
+const errorMessage = ref('')
 
-function handleSubmit() {
-  submitted.value = true
+async function handleSubmit() {
+  sending.value = true
+  errorMessage.value = ''
+
+  try {
+    await $fetch('/api/contato', {
+      method: 'POST',
+      body: {
+        nome: form.nome,
+        email: form.email,
+        mensagem: form.mensagem
+      }
+    })
+
+    submitted.value = true
+
+    form.nome = ''
+    form.email = ''
+    form.mensagem = ''
+  } catch (error) {
+    console.error(error)
+
+    errorMessage.value =
+      error?.data?.message ||
+      'Não foi possível enviar a mensagem. Tente novamente mais tarde.'
+  } finally {
+    sending.value = false
+  }
 }
 
 function closeModal() {
@@ -190,6 +228,46 @@ const channels = [
 }
 .submit-button:hover::after {
   transform: translateX(3px);
+}
+
+.submit-button:disabled {
+  opacity: .7;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.submit-button:disabled::after {
+  transform: none;
+}
+
+.form-error {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 14px 0 0;
+  padding: 12px 14px;
+  border: 1px solid #e7b8ad;
+  border-radius: 12px;
+  background: #fdf0ed;
+  color: #9a4938;
+  font-size: .92rem;
+  line-height: 1.5;
+}
+
+.form-error::before {
+  content: "!";
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: #df866c;
+  color: #fff;
+  font-size: .78rem;
+  font-weight: 800;
 }
 
 .contact-channels {

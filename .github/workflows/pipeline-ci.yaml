@@ -95,7 +95,7 @@ jobs:
         run: npm run build
 
       - name: Start application
-        run: npm run start &
+        run: node .output/server/index.mjs &
 
       - name: Wait for app to be ready
         run: npx wait-on http://localhost:3000 -t 60000

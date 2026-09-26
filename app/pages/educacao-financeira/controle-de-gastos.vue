@@ -2,7 +2,7 @@
   <main class="page page-module">
     <section class="content-card">
 <section>
-  <h1>Módulo 1 — Controle de Gastos</h1>
+  <h1>Módulo 2 — Controle de Gastos</h1>
   <h2>O primeiro passo para uma vida financeira mais tranquila</h2>
 
   <p>

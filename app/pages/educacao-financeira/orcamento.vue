@@ -2,7 +2,7 @@
   <main class="page page-module">
     <section class="content-card">
 <section>
-  <h1>Módulo 3 — Orçamento</h1>
+  <h1>Módulo 1 — Orçamento</h1>
   <h2>Planejar o dinheiro antes que ele vá embora</h2>
 
   <p>

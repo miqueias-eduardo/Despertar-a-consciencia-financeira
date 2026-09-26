@@ -2,7 +2,7 @@
   <main class="page page-module">
     <section class="content-card">
 <section>
-        <h1>Módulo 2 — Endividamento</h1>
+        <h1>Módulo 3 — Endividamento</h1>
         <h2>Quando o dinheiro deixa de ajudar e começa a preocupar</h2>
 
         <p>

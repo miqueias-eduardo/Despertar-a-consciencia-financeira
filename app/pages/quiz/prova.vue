@@ -7,7 +7,6 @@
           Sair do quiz
         </NuxtLink>
 
-        <p class="eyebrow">Quiz Financeiro</p>
 
         <h1>{{ levelMeta.title }}</h1>
 

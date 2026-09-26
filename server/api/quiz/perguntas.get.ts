@@ -1,4 +1,4 @@
-import { questionBank } from '../../data/quiz'
+import { questionBank } from '../../data/quiz/index'
 
 export default defineEventHandler((event) => {
   const query = getQuery(event)
@@ -11,8 +11,14 @@ export default defineEventHandler((event) => {
     })
   }
 
+  const perguntas = questionBank[nivel as keyof typeof questionBank]
+
+  const perguntasSelecionadas = [...perguntas]
+    .sort(() => Math.random() - 0.5)
+    .slice(0, 5)
+
   return {
     nivel,
-    perguntas: questionBank[nivel as keyof typeof questionBank]
+    perguntas: perguntasSelecionadas
   }
 })
